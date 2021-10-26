@@ -13,7 +13,7 @@ class LambdaBase(nn.Sequential):
     class
     """
     def __init__(self, f_n, *args):
-        super(LambdaBase).__init__(*args)
+        super(LambdaBase, self).__init__(*args)
         self.lambda_func = f_n
 
     def forward_prepare(self, input):
@@ -68,7 +68,7 @@ class Padding(nn.Module):
      where the actual dim to be padded will be dimension dim + 1.
     """
     def __init__(self, dim, pad, value, index, n_input_dim):
-        super(Padding).__init__()
+        super(Padding, self).__init__()
         self.value = value
         # self.index = index
         self.dim = dim
@@ -105,7 +105,7 @@ class Dropout(nn.Dropout):
         forward
         """
         input = input * (1 - self.p)
-        return super(Dropout).forward(input)
+        return super(Dropout, self).forward(input)
 
 
 class Dropout2d(nn.Dropout2d):
@@ -118,7 +118,7 @@ class Dropout2d(nn.Dropout2d):
         forward
         """
         input = input * (1 - self.p)
-        return super(Dropout2d).forward(input)
+        return super(Dropout2d, self).forward(input)
 
 
 class StatefulMaxPool2d(nn.MaxPool2d):
@@ -130,7 +130,7 @@ class StatefulMaxPool2d(nn.MaxPool2d):
         """
         init
         """
-        super(StatefulMaxPool2d).__init__(*args, **kwargs)
+        super(StatefulMaxPool2d, self).__init__(*args, **kwargs)
         self.indices = None
         self.input_size = None
 
@@ -139,7 +139,7 @@ class StatefulMaxPool2d(nn.MaxPool2d):
         init
         """
         return_indices, self.return_indices = self.return_indices, True
-        output, indices = super(StatefulMaxPool2d).forward(_x)
+        output, indices = super(StatefulMaxPool2d, self).forward(_x)
         self.return_indices = return_indices
         self.indices = indices
         self.input_size = _x.size()
@@ -156,7 +156,7 @@ class StatefulMaxUnpool2d(nn.Module):
         """
         init
         """
-        super(StatefulMaxUnpool2d).__init__()
+        super(StatefulMaxUnpool2d, self).__init__()
         self.pooling = pooling
         self.unpooling = nn.MaxUnpool2d(pooling.kernel_size, pooling.stride, pooling.padding)
 
