@@ -3,7 +3,7 @@ import os
 
 def main():
 	"""
-	Script for training based on pretrained models 
+	Script for testing based on pretrained models 
 
 	VARIABLES:
 		train_path (str) - path to the train.py file of initial repository 
@@ -16,23 +16,24 @@ def main():
 
 	"""
 
-	train_path = "../3dmv/train.py"
+	test_path = "../3dmv/test.py"
 	gpu_num = 0
-	train_list = "../data/train/"
-	data_path_2d = "../data/train/"
-	weigth_path = "../data/train/counts.txt"
+	scene_list = "../data/test/scenes.txt"
+	data_path_2d = "../data/test/"
+	data_path_3d = "../data/test/"
 	nearest_images = 5
 	model_path = "../data/models/models/scannetv2/scannet5_model2dfixed.pth"
+	model2d_orig_path = "../data/models/models/scannetv2/2d_scannet.pth "
 
-	command = """python3 {train_path} --gpu {gpu_num} --train_data_list {train_list}  \n 
-			  --data_path_2d {path_2d} --class_weight_file {weight_file} \n 
-			  --num_nearest_images {nearest_images} --model2d_path {model_path}
+	command = """python3 {train_path} --gpu {gpu_num} --scene_list {train_list}  \n 
+			  --model_path {model_path} --data_path_2d {path_2d} \n 
+			  --data_path_3d {} model2d_orig_path {} 
 			  """
 	command_input = ' '.join([line for line in command.split()]) 
 
-	os.system(command_input.format(train_path=train_path, gpu_num=gpu_num,
-			  train_list=train_list, path_2d=data_path_2d, weight_file=weigth_path, 
-			  nearest_images=nearest_images, model_path=model_path))
+	os.system(command_input.format(test_path=test_path, gpu_num=gpu_num,
+			  scene_list=scene_list, model_path=model_path, model2d_orig_path=model2d_orig_path,
+			  data_path_2d=data_path_2d, data_path_3d=data_path_3d))
 
 if __name__ == "__main__":
 	main()
