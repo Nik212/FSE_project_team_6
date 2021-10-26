@@ -61,9 +61,7 @@ Example test call:
 python test.py --gpu 0 --scene_list [path to list of test scenes] --model_path [path to trained model.pth] --data_path_2d [path to 2d image data] --data_path_3d [path to test scene data] --num_nearest_images 5 --model2d_orig_path [path to pretrained 2d model]
 ```
 
-Another option is to run [/scripts/train.py](https://github.com/Nik212/FSE_project_team_6/blob/main/scripts/test.py) script, where all default paths and example data are specified. The description of each parameter is described inside this script.
-
-* Test scenes for ScanNet v2: [3dmv_scannet_v2_test_scenes.zip](http://kaldir.vc.in.tum.de/adai/3DMV/data/3dmv_scannet_v2_test_scenes.zip) (110M)
+Another option is to run [/scripts/test.py](https://github.com/Nik212/FSE_project_team_6/blob/main/scripts/test.py) script, where all default paths and example data are specified. The description of each parameter is described inside this script.
 
 
 ## Citation:  
