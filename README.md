@@ -3,9 +3,6 @@
 This repository is not an original official implementation of the work, but a refactored codebase. Performed within the FSE coursework at Skoltech.
 The original code is located in the following repository (https://github.com/angeladai/3DMV)
 
-The script is running using Docker. We use the following image nvidia/cuda:10.2-cudnn7-devel-ubuntu18.04.
-
-
 # 3DMV
 
 3DMV jointly combines RGB color and geometric information to perform 3D semantic segmentation of RGB-D scans. This work is based on our ECCV'18 paper, [
@@ -65,6 +62,10 @@ python test.py --gpu 0 --scene_list [path to list of test scenes] --model_path [
 ```
 
 Another option is to run [/scripts/test.py](https://github.com/Nik212/FSE_project_team_6/blob/main/scripts/test.py) script, where all default paths and example data are specified. The description of each parameter is described inside this script.
+
+
+## Automatic variant of running test examples.
+If you have data prepared according to ScanNet standard, then you can run [run.sh](https://github.com/Nik212/FSE_project_team_6/blob/main/scripts/run.sh) script that does all the sequence of automatic processing like downloading and preparing, running training and testing datasets automatically. However, we did not get access to the required ScanNat dataset. Therefore, not all requirements are fulfilled yet.
 
 
 ## Citation:  
