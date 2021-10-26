@@ -12,23 +12,12 @@ The original code is located in the following repository (https://github.com/ang
 
 
 ## Code
+### Downloading data 
+   An example data is already downloaded with a Docker image. The script /scripts/download.py is run that downloads training [models.zip](http://kaldir.vc.in.tum.de/adai/3DMV/models.zip) (6.2G) and testing [3dmv_scannet_v2_test_scenes.zip](http://kaldir.vc.in.tum.de/adai/3DMV/data/3dmv_scannet_v2_test_scenes.zip) (110M) zip archives, unzips them into /data/, and removes archives. Further, the same manipulations are performed for the pretrained models [models.zip](http://kaldir.vc.in.tum.de/adai/3DMV/models.zip).
+
 ### Installation:  
 Training is implemented with [PyTorch](https://pytorch.org/). This code was developed under PyTorch 0.2 and recently upgraded to PyTorch 0.4.
 
-### Training:  
-* See `python train.py --help` for all train options. 
-Example train call:
-```
-python train.py --gpu 0 --train_data_list [path to list of train files] --data_path_2d [path to 2d image data] --class_weight_file [path to txt file of train histogram] --num_nearest_images 5 --model2d_path [path to pretrained 2d model]
-```
-* Trained models: [models.zip](http://kaldir.vc.in.tum.de/adai/3DMV/models.zip)
-
-### Testing
-* See `python test.py --help` for all test options. 
-Example test call:
-```
-python test.py --gpu 0 --scene_list [path to list of test scenes] --model_path [path to trained model.pth] --data_path_2d [path to 2d image data] --data_path_3d [path to test scene data] --num_nearest_images 5 --model2d_orig_path [path to pretrained 2d model]
-```
 
 ### Data:
 This data has been precomputed from the [ScanNet](http://www.scan-net.org/) (v2) dataset.
@@ -52,6 +41,25 @@ This data has been precomputed from the [ScanNet](http://www.scan-net.org/) (v2)
     scene0000_01/
     ⋮
     ```
+    
+All required dependencies related to ScanNet are automatically done with /scripts/prepare.py/. Additionally, it converts python2 format to python3.
+   
+
+### Training:  
+* See `python train.py --help` for all train options. 
+Example train call:
+```
+python train.py --gpu 0 --train_data_list [path to list of train files] --data_path_2d [path to 2d image data] --class_weight_file [path to txt file of train histogram] --num_nearest_images 5 --model2d_path [path to pretrained 2d model]
+```
+* Trained models: [models.zip](http://kaldir.vc.in.tum.de/adai/3DMV/models.zip)
+
+### Testing
+* See `python test.py --help` for all test options. 
+Example test call:
+```
+python test.py --gpu 0 --scene_list [path to list of test scenes] --model_path [path to trained model.pth] --data_path_2d [path to 2d image data] --data_path_3d [path to test scene data] --num_nearest_images 5 --model2d_orig_path [path to pretrained 2d model]
+```
+
 * Test scenes for ScanNet v2: [3dmv_scannet_v2_test_scenes.zip](http://kaldir.vc.in.tum.de/adai/3DMV/data/3dmv_scannet_v2_test_scenes.zip) (110M)
 
 
