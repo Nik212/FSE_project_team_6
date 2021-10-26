@@ -13,7 +13,7 @@ The original code is located in the following repository (https://github.com/ang
 
 ## Code
 ### Downloading data 
-   An example data is already downloaded with a Docker image. The script /scripts/download.py is run that downloads training [models.zip](http://kaldir.vc.in.tum.de/adai/3DMV/models.zip) (6.2G) and testing [3dmv_scannet_v2_test_scenes.zip](http://kaldir.vc.in.tum.de/adai/3DMV/data/3dmv_scannet_v2_test_scenes.zip) (110M) zip archives, unzips them into /data/, and removes archives. Further, the same manipulations are performed for the pretrained models [models.zip](http://kaldir.vc.in.tum.de/adai/3DMV/models.zip).
+   An example data is already downloaded with a Docker image. The script ./scripts/download.py is run that downloads training [models.zip](http://kaldir.vc.in.tum.de/adai/3DMV/models.zip) (6.2G) and testing [3dmv_scannet_v2_test_scenes.zip](http://kaldir.vc.in.tum.de/adai/3DMV/data/3dmv_scannet_v2_test_scenes.zip) (110M) zip archives, unzips them into /data/, and removes archives. Further, the same manipulations are performed for the pretrained models [models.zip](http://kaldir.vc.in.tum.de/adai/3DMV/models.zip).
 
 ### Installation:  
 Training is implemented with [PyTorch](https://pytorch.org/). This code was developed under PyTorch 0.2 and recently upgraded to PyTorch 0.4.
