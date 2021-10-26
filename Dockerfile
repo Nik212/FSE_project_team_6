@@ -1,6 +1,22 @@
-FROM lileee/ubuntu-16.04-cuda-9.0-python-3.5-pytorch:latest
+FROM nvidia/cuda:10.2-cudnn7-devel-ubuntu18.04
 
-ADD 3dmv/ 3dmv/
-ADD prepare_data prepare_data/
-ADD scripts scripts/
+# set bash as current shell
+#RUN chsh -s /bin/bash
+#SHELL ["/bin/bash", "-c"]
 
+# install anaconda
+RUN apt-get update -y
+RUN apt-get install python3 -y   
+RUN apt-get install python3-pip -y
+
+# setup conda virtual environment
+#COPY ./requirements.txt /tmp/requirements.txt
+RUN python3  -m pip install --upgrade pip
+COPY requirements.txt /tmp/
+RUN python3 -m pip install -r /tmp/requirements.txt
+
+
+
+ADD scripts /
+
+CMD [ "python3", "download.py"]
