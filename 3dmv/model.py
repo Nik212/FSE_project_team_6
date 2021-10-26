@@ -10,7 +10,7 @@ class Model2d3d(nn.Module):
     model description
     """
     def __init__(self, num_classes, num_images, intrinsic, image_dims, grid_dims, depth_min, depth_max, voxel_size):
-        super(Model2d3d).__init__()
+        super(Model2d3d, self).__init__()
         self.num_classes = num_classes
         self.num_images = num_images
         self.intrinsic = intrinsic
