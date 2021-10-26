@@ -1,0 +1,7 @@
+imageio==2.9.0
+scikit-image==0.18.3
+opencv==4.5.4.58
+pypng=0.0.21
+torchnet==0.0.4
+h5py==3.5.0
+torchvision==0.11.0
