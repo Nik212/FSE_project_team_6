@@ -1,4 +1,4 @@
-# 3DMV 
+# Please, note
 
 This repository is not an original official implementation of the work, but a refactored codebase. Performed within the FSE coursework at Skoltech.
 The original code is located in the following repository (https://github.com/angeladai/3DMV)
