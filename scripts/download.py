@@ -24,7 +24,7 @@ def download_file(url_path, location_path, block_size):
 	with open(file_downloaded, 'wb') as file:
 		total_length = int(rqsts.headers.get('content-length'))
 		for chunk in progress.bar(rqsts.iter_content(chunk_size=block_size), 
-                                          expected_size=(total_length/block_size) + 1): 
+										  expected_size=(total_length/block_size) + 1): 
 			if chunk:
 				file.write(chunk)
 				file.flush()
@@ -69,14 +69,17 @@ def main():
 
 	url_train = "http://kaldir.vc.in.tum.de/adai/3DMV/data/3dmv_scannet_v2_train.zip"
 	url_test = "http://kaldir.vc.in.tum.de/adai/3DMV/data/3dmv_scannet_v2_test_scenes.zip"
+	url_models = "http://kaldir.vc.in.tum.de/adai/3DMV/models.zip"
 	block_size = 1024	# block size in bytes  
 	system = platform.system()
 	train_path = "../data/train"
 	test_path = "../data/test"
+	models_path = "../data/models"
 
 	if system == "Windows":
 		train_path = os.path.abspath(train_path)
 		test_path = os.path.abspath(test_path)
+		models_path = os.path.abspath(models_path)
 	elif system == "Linux":
 		pass
 	else:
@@ -88,6 +91,7 @@ def main():
 	# downloading data
 	make_dataset(url_path=url_train, location_path=train_path, block_size=block_size)
 	make_dataset(url_path=url_test, location_path=test_path, block_size=block_size)
+	make_dataset(url_path=url_models, location_path=models_path, block_size=block_size)
 
 
 if __name__ == "__main__":
