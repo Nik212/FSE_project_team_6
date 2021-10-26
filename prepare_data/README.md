@@ -30,7 +30,7 @@ scene0000_01/
 
 3. Example usage:
 ```
-python prepare_2d_data.py --scannet_path data/scannetv2 --output_path data/scannetv2_images --export_label_images
+python3 prepare_2d_data.py --scannet_path data/scannetv2 --output_path data/scannetv2_images --export_label_images
 ```
 
 
