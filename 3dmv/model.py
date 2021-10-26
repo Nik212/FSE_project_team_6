@@ -1,17 +1,16 @@
-
-import os, sys, inspect
 import torch
-import torch.nn as nn
-import torch.backends.cudnn as cudnn
-import numpy as np
+from torch import nn
 
-import util
 from projection import Projection
+
 
 # z-y-x coordinates
 class Model2d3d(nn.Module):
+    """
+    model description
+    """
     def __init__(self, num_classes, num_images, intrinsic, image_dims, grid_dims, depth_min, depth_max, voxel_size):
-        super(Model2d3d, self).__init__()
+        super(Model2d3d).__init__()
         self.num_classes = num_classes
         self.num_images = num_images
         self.intrinsic = intrinsic
@@ -23,7 +22,7 @@ class Model2d3d(nn.Module):
         self.nf0 = 32 
         self.nf1 = 64 
         self.nf2 = 128 
-        self.bf = 1024
+        self.b_f = 1024
         column_height = grid_dims[2]
         self.pooling = nn.MaxPool1d(kernel_size=num_images)
         self.features2d = nn.Sequential(
@@ -88,13 +87,21 @@ class Model2d3d(nn.Module):
             nn.Dropout3d(0.2)
         )
         self.classifier = nn.Sequential(
-            nn.Linear(self.nf2 * 54, self.bf),
+            nn.Linear(self.nf2 * 54, self.b_f),
             nn.ReLU(True),
             nn.Dropout(0.5),
-            nn.Linear(self.bf, num_classes*column_height)
+            nn.Linear(self.b_f, num_classes*column_height)
         )
 
     def forward(self, volume, image_features, projection_indices_3d, projection_indices_2d, volume_dims):
+        """
+        @param volume:
+        @param image_features:
+        @param projection_indices_3d:
+        @param projection_indices_2d:
+        @param volume_dims:
+        @return:
+        """
         assert len(volume.shape) == 5 and len(image_features.shape) == 4
         batch_size = volume.shape[0]
         num_images = projection_indices_3d.shape[0] // batch_size
@@ -104,20 +111,20 @@ class Model2d3d(nn.Module):
         image_features = torch.stack(image_features, dim=4)
 
         # reshape to max pool over features
-        sz = image_features.shape
-        image_features = image_features.view(sz[0], -1, batch_size * num_images)
+        s_z = image_features.shape
+        image_features = image_features.view(s_z[0], -1, batch_size * num_images)
         if num_images == self.num_images:
             image_features = self.pooling(image_features)
         else:
             image_features = nn.MaxPool1d(kernel_size=num_images)(image_features)
-        image_features = image_features.view(sz[0], sz[1], sz[2], sz[3], batch_size)
+        image_features = image_features.view(s_z[0], s_z[1], s_z[2], s_z[3], batch_size)
         image_features = image_features.permute(4, 0, 1, 2, 3)
 
         volume = self.features3d(volume)
         image_features = self.features2d(image_features)
-        x = torch.cat([volume, image_features], 1)
-        x = self.features(x)
-        x = x.view(batch_size, self.nf2 * 54)
-        x = self.classifier(x)
-        x = x.view(batch_size, self.grid_dims[2], self.num_classes)
-        return x
+        _x = torch.cat([volume, image_features], 1)
+        _x = self.features(_x)
+        _x = _x.view(batch_size, self.nf2 * 54)
+        _x = self.classifier(_x)
+        _x = _x.view(batch_size, self.grid_dims[2], self.num_classes)
+        return _x
