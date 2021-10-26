@@ -3,6 +3,9 @@
 This repository is not an original official implementation of the work, but a refactored codebase. Performed within the FSE coursework at Skoltech.
 The original code is located in the following repository (https://github.com/angeladai/3DMV)
 
+The script is running using Docker. We use the following image nvidia/cuda:10.2-cudnn7-devel-ubuntu18.04.
+
+
 # 3DMV
 
 3DMV jointly combines RGB color and geometric information to perform 3D semantic segmentation of RGB-D scans. This work is based on our ECCV'18 paper, [
