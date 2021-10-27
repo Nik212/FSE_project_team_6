@@ -3,11 +3,6 @@
 This repository is not an original official implementation of the work, but a refactored codebase. Performed within the FSE coursework at Skoltech.
 The original code is located in the following repository (https://github.com/angeladai/3DMV)
 
-# 3DMV
-
-3DMV jointly combines RGB color and geometric information to perform 3D semantic segmentation of RGB-D scans. This work is based on our ECCV'18 paper, [
-3DMV: Joint 3D-Multi-View Prediction for 3D Semantic Scene Segmentation](https://arxiv.org/pdf/1803.10409.pdf).
-
 [<img src="images/teaser.jpg">](https://arxiv.org/abs/1803.10409)
 
 ## Docker 
@@ -71,7 +66,7 @@ If you have data prepared according to ScanNet standard, then you can use [run.s
 
 
 ## Citation:  
-If you find our work useful in your research, please consider citing:
+If you find the original work of the authors useful in your research, please consider citing their work:
 ```
 @inproceedings{dai20183dmv,
  author = {Dai, Angela and Nie{\ss}ner, Matthias},
