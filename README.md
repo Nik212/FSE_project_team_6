@@ -11,7 +11,7 @@ The original code is located in the following repository (https://github.com/ang
 [<img src="images/teaser.jpg">](https://arxiv.org/abs/1803.10409)
 
 ## Docker 
-This repository provides Docker image [Dockerfile](https://github.com/Nik212/FSE_project_team_6/blob/main/Dockerfile) and [requirements.txt](https://github.com/Nik212/FSE_project_team_6/blob/main/requirements.txt) with installed CUDA, dependencies and example data for training and testing, and pre-trained models.
+This repository provides Docker image ([Dockerfile](https://github.com/Nik212/FSE_project_team_6/blob/main/Dockerfile)) and [requirements.txt](https://github.com/Nik212/FSE_project_team_6/blob/main/requirements.txt) with installed CUDA, dependencies and example data for training and testing, and pre-trained models.
 
 ## Code
 ### Downloading data 
